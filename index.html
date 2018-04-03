@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Teste Trello</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+var data = null;
+
+var xhr = new XMLHttpRequest();
+
+var result = null;
+var names =[];
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    result = JSON.parse(this.responseText);
+
+    var str ="";
+for (var i = result.length - 1; i >= 0; i--) {
+	names.push(result[i].name);
+	str+=result[i].name+"</br>";
+
+}
+
+$("#container").html(str);
+$("#numero").html("Total de Tarefas Ativas "+result.length);
+
+console.log(result.length);
+    console.log(names);
+  }
+});
+
+xhr.open("GET", "https://api.trello.com/1/boards/Pz4VqRgs/cards/visible?key=8ed3b71cfd765ef3d7fd17bd4ca64181&token=0990ac99337589987515bfc207197621a60d861609595593e67b5f663a48f60f");
+
+xhr.send(data);
+
+	</script>
+	<h1 id="numero"></h1>
+	<div id="container"></div>
+
+</body>
+</html>
