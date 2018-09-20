@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="UTF-8">
 	<title>Teste Trello</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
 </head>
-<body>
+<body id="page-top" class="masthead bg-primary text-white text-center">
 	<script type="text/javascript">
 var data = null;
 
@@ -25,8 +39,8 @@ for (var i = result.length - 1; i >= 0; i--) {
 
 }
 
-$("#container").html(str);
-$("#numero").html("Total de Tarefas Ativas "+result.length);
+// $("#container").html(str);
+$("#numero").html(+result.length);
 
 console.log(result.length);
     console.log(names);
@@ -42,8 +56,14 @@ xhr.send(data);
 }, 60000);
 
 	</script>
-	<h1 id="numero"></h1>
-	<div id="container"></div>
 
+	    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container">
+        <h2 class="font-weight-light mb-0">TOTAL DE TAREFAS ATIVAS</h2>
+        <hr class="star-light">
+      	<h1 id="numero"></h1>
+      </div>
+    </header>
 </body>
 </html>
