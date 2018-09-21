@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Teste Trello</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+</head>
+<body>
+	<div style="display: flex; justify-content: center; align-items: center; height: 100vh">
+      <div id="container" style=" display: grid; grid-template-columns: 1fr 1fr;  grid-column-gap: 10px;
+  grid-row-gap: 15px;">
+      </div>  
+</div>
+      <script type="text/javascript">
+    var url = "https://api.trello.com/1/boards/Pz4VqRgs/lists?cards=open&card_fields=all&filter=open&fields=all&key=8ed3b71cfd765ef3d7fd17bd4ca64181&token=0990ac99337589987515bfc207197621a60d861609595593e67b5f663a48f60f"
+
+
+    var getTrelloBoardInfo = function() {
+      $.get(url, function(data){
+
+        var _container = document.getElementById('container');
+
+        if (_container.children.length > 0) {
+          _container.innerHTML = ""
+        }
+
+        data.forEach(function(lista){
+          console.log(data)
+          var _divLista = document.createElement('div');
+          _divLista.id = lista.name;
+          _divLista.innerHTML = "<h2>"+ lista.name +" ("+ lista.cards.length +") </h2>"
+
+          lista.cards.forEach(function(card){
+            _divLista.innerHTML += "<div>" + card.name + "</div>"
+          })
+          
+
+
+          document.getElementById('container').appendChild(_divLista )
+        })
+      })
+    }
+
+getTrelloBoardInfo()
+setInterval(getTrelloBoardInfo, 60000);
+
+  </script>
+</body>
+</html>
